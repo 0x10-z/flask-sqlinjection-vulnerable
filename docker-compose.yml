@@ -1,0 +1,17 @@
+version: "3.9"
+
+services:
+  sqli:
+    container_name: sqli
+    build: .
+    working_dir: /app
+    command: flask run --port 80 --host 0.0.0.0
+    environment:
+      DEBUG: 1
+      FLASK_ENV: development
+      FLASK_APP: src/app.py
+    volumes:
+      - .:/app
+    ports:
+      - "80:80"
+    restart: on-failure
